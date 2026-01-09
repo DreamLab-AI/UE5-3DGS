@@ -1,0 +1,27 @@
+{
+  "initialized": true,
+  "topology": "hierarchical",
+  "workers": [],
+  "consensus": {
+    "pending": [],
+    "history": []
+  },
+  "sharedMemory": {
+    "broadcasts": [
+      {
+        "messageId": "msg-1767990390435-rfle3z",
+        "message": "Starting UE5-3DGS full implementation. SPARC methodology with London TDD. All agents coordinate via memory.",
+        "priority": "high",
+        "fromId": "system",
+        "timestamp": "2026-01-09T20:26:30.435Z"
+      }
+    ]
+  },
+  "createdAt": "2026-01-09T20:05:52.346Z",
+  "updatedAt": "2026-01-09T20:26:30.435Z",
+  "queen": {
+    "agentId": "doc-queen",
+    "electedAt": "2026-01-09T20:05:52.346Z",
+    "term": 1
+  }
+}

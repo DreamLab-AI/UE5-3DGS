@@ -1,0 +1,303 @@
+{
+  "entries": {
+    "research/3dgs/session-start": {
+      "key": "research/3dgs/session-start",
+      "value": {
+        "task": "3DGS research swarm for UE5-3DGS project",
+        "startedAt": "2026-01-09",
+        "topics": [
+          "3dgs-training",
+          "polygonal-to-splat",
+          "360-capture",
+          "optimization",
+          "formats",
+          "rendering"
+        ]
+      },
+      "metadata": {
+        "type": "session",
+        "project": "unreal2gaussian"
+      },
+      "storedAt": "2026-01-09T19:53:00.157Z",
+      "accessCount": 0,
+      "lastAccessed": "2026-01-09T19:53:00.157Z"
+    },
+    "research/3dgs/core-training": {
+      "key": "research/3dgs/core-training",
+      "value": {
+        "key_techniques": [
+          "3DGS-MCMC (NeurIPS 2024 Spotlight) - robust to initialization, SGLD-based",
+          "DashGaussian (CVPR 2025 Highlight) - 45% faster training via progressive resolution",
+          "Mip-Splatting (CVPR 2024 Best Student) - anti-aliasing via 3D smoothing + 2D Mip filter",
+          "gsplat - 4x less GPU memory, 15% faster"
+        ],
+        "training_speedup": "10-15x vs original (100-200 sec vs 35-45 min)",
+        "memory_reduction": "4x via gsplat kernels",
+        "model_compression": "27-65x via CompGS/Reduced3DGS",
+        "quality_improvements": [
+          "Spec-Gaussian for specular surfaces",
+          "2DGS for better geometry",
+          "Scaffold-GS anchors for view-adaptive"
+        ],
+        "recommended_papers": [
+          "Kerbl 2023 (original)",
+          "Mip-Splatting 2024",
+          "3DGS-MCMC 2024",
+          "DashGaussian 2025",
+          "Scaffold-GS 2024"
+        ]
+      },
+      "metadata": {
+        "domain": "3dgs-training",
+        "agent": "core-researcher"
+      },
+      "storedAt": "2026-01-09T19:58:47.740Z",
+      "accessCount": 1,
+      "lastAccessed": "2026-01-09T20:05:52.649Z"
+    },
+    "research/3dgs/polygon-conversion": {
+      "key": "research/3dgs/polygon-conversion",
+      "value": {
+        "camera_trajectories": {
+          "orbital_rings": "3-5 elevation levels (0, 22.5, 45, 67.5, 90 degrees)",
+          "views_per_ring": "24-36 (10-15 degree increments)",
+          "total_views": "100-180 for standard scenes",
+          "overlap": "60-80% between adjacent views"
+        },
+        "view_counts": {
+          "simple_objects": "50-100",
+          "room_scale": "100-200",
+          "outdoor": "150-300",
+          "large_scenes": "200-400+"
+        },
+        "initialization": [
+          "Mesh2Splat (EA/SEED) - geometry+texture informed",
+          "SuGaR - mesh extraction + hybrid representation",
+          "MeshGS - mesh-aligned gaussians",
+          "GaMeS - animation-ready"
+        ],
+        "depth_usage": "+0.8 dB PSNR improvement with depth supervision",
+        "material_handling": {
+          "base_color": "SH degree 0 (DC component)",
+          "roughness": "influences gaussian covariance",
+          "metallic": "view-dependent SH terms",
+          "normal": "gaussian orientation initialization"
+        }
+      },
+      "metadata": {
+        "domain": "polygon-to-3dgs",
+        "agent": "polygon-researcher"
+      },
+      "storedAt": "2026-01-09T19:58:47.845Z",
+      "accessCount": 1,
+      "lastAccessed": "2026-01-09T20:05:52.744Z"
+    },
+    "research/3dgs/360-vr": {
+      "key": "research/3dgs/360-vr",
+      "value": {
+        "360_methods": [
+          "Splatter-360 (CVPR 2025) - bi-projection encoder + spherical cost volume",
+          "360-GS - tangent plane projection + layout priors",
+          "ODGS (NeurIPS 2024) - native equirectangular CUDA rasterizer",
+          "Fisheye-GS - equidistant projection Jacobian"
+        ],
+        "vr_platforms": {
+          "meta_quest": "SPZ format, Scaniverse 50K+ scenes, Horizon Hyperscape",
+          "apple_vision_pro": "SuperSplat WebXR, MetalSplatter Swift",
+          "webxr": "SOG format, 95% compression"
+        },
+        "export_formats": {
+          "spz": "90% compression vs PLY, glTF embedding",
+          "sog": "95% compression, web optimized",
+          "gltf": "KHR_gaussian_splatting extension (official 2025)"
+        },
+        "quality_targets": {
+          "psnr_vr_ready": ">35 dB",
+          "ssim_vr_ready": ">0.97",
+          "fps_quest3": "72-90",
+          "fps_vision_pro": "90-120"
+        }
+      },
+      "metadata": {
+        "domain": "360-vr",
+        "agent": "360-researcher"
+      },
+      "storedAt": "2026-01-09T19:58:47.951Z",
+      "accessCount": 1,
+      "lastAccessed": "2026-01-09T20:05:52.845Z"
+    },
+    "research/3dgs/compression-optimization": {
+      "key": "research/3dgs/compression-optimization",
+      "value": {
+        "compression_ratios": {
+          "vector_quantization": "45x",
+          "HAC_hash": "100x",
+          "spz_format": "90% reduction",
+          "sh_reduction": "48x (degree 3 to 0)"
+        },
+        "streaming": {
+          "LOD_layers": "3-4 recommended",
+          "chunk_size": "64K splats per chunk",
+          "base_layer": "5-10% of splats for instant load"
+        },
+        "platform_targets": {
+          "desktop_high": {
+            "max_splats": 10000000,
+            "vram": "512MB",
+            "fps": 120
+          },
+          "vr_quest3": {
+            "max_splats": 1000000,
+            "memory": "128MB",
+            "fps": 72
+          },
+          "mobile": {
+            "max_splats": 500000,
+            "memory": "64MB",
+            "fps": 60
+          },
+          "webgpu": {
+            "max_splats": 3000000,
+            "fps": 60
+          }
+        },
+        "file_sizes": {
+          "web_embed": "5-20MB",
+          "mobile_app": "20-50MB",
+          "vr_quest": "30-100MB",
+          "desktop": "100-500MB"
+        }
+      },
+      "metadata": {
+        "domain": "compression",
+        "agent": "optimization-researcher"
+      },
+      "storedAt": "2026-01-09T19:58:48.076Z",
+      "accessCount": 1,
+      "lastAccessed": "2026-01-09T20:05:52.937Z"
+    },
+    "research/3dgs/formats-standards": {
+      "key": "research/3dgs/formats-standards",
+      "value": {
+        "primary_format": {
+          "name": "PLY binary",
+          "bytes_per_splat": 236,
+          "attributes": [
+            "position",
+            "scale",
+            "rotation",
+            "opacity",
+            "f_dc",
+            "f_rest"
+          ]
+        },
+        "emerging_standards": {
+          "gltf": "KHR_gaussian_splatting (official 2025)",
+          "spz": "Niantic, 90% compression, MIT license",
+          "usd": "NVIDIA Omniverse support"
+        },
+        "tools": {
+          "canonical": "graphdeco-inria/gaussian-splatting",
+          "cuda": "nerfstudio gsplat",
+          "web": "SuperSplat, antimatter15/splat",
+          "editor": "SuperSplat (MIT)"
+        },
+        "platform_formats": {
+          "vision_pro": "PLY/SPZ via MetalSplatter",
+          "quest": "SPZ via Scaniverse",
+          "web": "SOG/compressed PLY",
+          "ue5": "PLY via XScene/Volinga"
+        }
+      },
+      "metadata": {
+        "domain": "formats",
+        "agent": "standards-researcher"
+      },
+      "storedAt": "2026-01-09T19:58:48.197Z",
+      "accessCount": 1,
+      "lastAccessed": "2026-01-09T20:05:53.086Z"
+    },
+    "research/3dgs/rendering": {
+      "key": "research/3dgs/rendering",
+      "value": {
+        "rasterization": {
+          "tile_based": "original 16x16 tiles, GPU radix sort",
+          "hardware": "GauRast 2025 - 23x speedup, 24x energy reduction",
+          "gsplat": "4x less memory, NVIDIA 3DGUT integration"
+        },
+        "anti_aliasing": [
+          "Mip-Splatting (integrated)",
+          "Multi-Scale 3DGS (13-66% PSNR improvement)",
+          "Analytic-Splatting (ECCV 2024 Oral)"
+        ],
+        "relighting": [
+          "GS3 Triple Gaussian (SIGGRAPH Asia 2024)",
+          "Relightable 3D Gaussian (BVH ray-tracing)",
+          "PRTGS (precomputed radiance transfer, 30+ FPS)"
+        ],
+        "hybrid_rendering": [
+          "SuGaR - mesh extraction, animation support",
+          "NVIDIA 3DGRUT - ray-traced reflections/refractions",
+          "RaySplats - ray-ellipse intersections"
+        ],
+        "ue5_plugins": {
+          "free": "XScene-UEPlugin (Apache 2.0)",
+          "paid": [
+            "Volinga Pro (relighting)",
+            "3D Gaussians Plugin",
+            "UEGaussianSplatting"
+          ]
+        }
+      },
+      "metadata": {
+        "domain": "rendering",
+        "agent": "rendering-researcher"
+      },
+      "storedAt": "2026-01-09T19:58:48.316Z",
+      "accessCount": 1,
+      "lastAccessed": "2026-01-09T20:05:53.183Z"
+    },
+    "swarm/researcher/research-docs-complete": {
+      "key": "swarm/researcher/research-docs-complete",
+      "value": {
+        "status": "complete",
+        "files_created": 6,
+        "location": "/home/devuser/workspace/unreal2gaussian/docs/research/",
+        "documents": [
+          "training-techniques.md",
+          "camera-trajectories.md",
+          "360-vr-support.md",
+          "compression-streaming.md",
+          "format-standards.md",
+          "rendering-advances.md"
+        ],
+        "timestamp": "2026-01-09T00:00:00.000Z",
+        "key_findings": {
+          "training_speedup": "10-15x with 3DGS-MCMC",
+          "memory_reduction": "4x with gsplat",
+          "compression_ratios": "27-100x depending on method",
+          "quality_improvements": "+0.5-1.0 dB PSNR with Mip-Splatting",
+          "vr_targets": {
+            "quest3": "500K-1M splats",
+            "vision_pro": "2-5M splats",
+            "webxr": "200K-500K splats"
+          },
+          "ue5_plugins": [
+            "XScene (free)",
+            "Volinga Pro (paid)",
+            "Luma Plugin"
+          ]
+        }
+      },
+      "metadata": {
+        "agent": "researcher",
+        "task": "research-documentation",
+        "project": "unreal2gaussian"
+      },
+      "storedAt": "2026-01-09T20:13:08.043Z",
+      "accessCount": 0,
+      "lastAccessed": "2026-01-09T20:13:08.043Z"
+    }
+  },
+  "version": "3.0.0"
+}

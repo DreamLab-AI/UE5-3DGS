@@ -1,0 +1,8 @@
+{"level":"info","message":"[GOAPPlanner] Seeded 61 actions to database","service":"agentic-qe-fleet","timestamp":"2026-01-09T20:44:39.262Z"}
+{"durationMinutes":60,"enabled":true,"level":"info","message":"[LearningInit] Initializing Nightly-Learner system","mode":"hybrid","service":"agentic-qe-fleet","startHour":2,"timestamp":"2026-01-09T20:44:45.890Z"}
+{"level":"info","message":"[LearningInit] Created learning configuration","path":"/home/devuser/workspace/unreal2gaussian/.agentic-qe/learning-config.json","service":"agentic-qe-fleet","timestamp":"2026-01-09T20:44:45.931Z"}
+{"bufferSize":100,"flushInterval":30000,"level":"info","message":"[ExperienceCapture] Started","service":"agentic-qe-fleet","timestamp":"2026-01-09T20:44:45.937Z"}
+{"bufferSize":0,"level":"info","message":"[LearningInit] ExperienceCapture initialized","service":"agentic-qe-fleet","timestamp":"2026-01-09T20:44:45.938Z","totalCaptured":0}
+{"level":"info","message":"[ExperienceCapture] Stopped","service":"agentic-qe-fleet","timestamp":"2026-01-09T20:44:45.939Z","totalCaptured":0,"totalFlushed":0}
+{"level":"info","message":"[LearningInit] Created scheduler startup script","path":"/home/devuser/workspace/unreal2gaussian/.agentic-qe/start-learning.js","service":"agentic-qe-fleet","timestamp":"2026-01-09T20:44:45.941Z"}
+{"level":"info","message":"[LearningInit] Learning system initialization complete","service":"agentic-qe-fleet","timestamp":"2026-01-09T20:44:45.942Z"}
