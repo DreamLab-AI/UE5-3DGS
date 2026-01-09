@@ -20,20 +20,20 @@
 class UNREALTOGAUSSIAN_API FGaussianCaptureEditorMode : public FEdMode
 {
 public:
-	const static FEditorModeID EM_GaussianCapture;
+	static const FEditorModeID EM_GaussianCapture;
 
 	FGaussianCaptureEditorMode();
 	virtual ~FGaussianCaptureEditorMode();
 
 	// FEdMode interface
-	virtual void Enter() override;
-	virtual void Exit() override;
-	virtual void Tick(FEditorViewportClient* ViewportClient, float DeltaTime) override;
-	virtual void Render(const FSceneView* View, FViewport* Viewport, FPrimitiveDrawInterface* PDI) override;
-	virtual bool HandleClick(FEditorViewportClient* InViewportClient, HHitProxy* HitProxy, const FViewportClick& Click) override;
-	virtual bool InputKey(FEditorViewportClient* ViewportClient, FViewport* Viewport, FKey Key, EInputEvent Event) override;
-	virtual bool IsCompatibleWith(FEditorModeID OtherModeID) const override;
-	virtual bool UsesToolkits() const override { return true; }
+	void Enter() override;
+	void Exit() override;
+	void Tick(FEditorViewportClient* ViewportClient, float DeltaTime) override;
+	void Render(const FSceneView* View, FViewport* Viewport, FPrimitiveDrawInterface* PDI) override;
+	bool HandleClick(FEditorViewportClient* InViewportClient, HHitProxy* HitProxy, const FViewportClick& Click) override;
+	bool InputKey(FEditorViewportClient* ViewportClient, FViewport* Viewport, FKey Key, EInputEvent Event) override;
+	bool IsCompatibleWith(FEditorModeID OtherModeID) const override;
+	bool UsesToolkits() const override { return true; }
 
 	/** Get current capture configuration */
 	const FCaptureConfig& GetCaptureConfig() const { return CaptureConfig; }
@@ -122,10 +122,10 @@ public:
 	FGaussianCaptureEditorModeToolkit();
 
 	// FModeToolkit interface
-	virtual void Init(const TSharedPtr<IToolkitHost>& InitToolkitHost, TWeakObjectPtr<UEdMode> InOwningMode) override;
-	virtual FName GetToolkitFName() const override { return FName("GaussianCaptureEditorModeToolkit"); }
-	virtual FText GetBaseToolkitName() const override { return NSLOCTEXT("GaussianCapture", "ToolkitName", "3DGS Capture"); }
-	virtual TSharedPtr<SWidget> GetInlineContent() const override { return ToolkitWidget; }
+	void Init(const TSharedPtr<IToolkitHost>& InitToolkitHost, TWeakObjectPtr<UEdMode> InOwningMode) override;
+	FName GetToolkitFName() const override { return FName("GaussianCaptureEditorModeToolkit"); }
+	FText GetBaseToolkitName() const override { return NSLOCTEXT("GaussianCapture", "ToolkitName", "3DGS Capture"); }
+	TSharedPtr<SWidget> GetInlineContent() const override { return ToolkitWidget; }
 
 private:
 	TSharedPtr<SWidget> ToolkitWidget;
